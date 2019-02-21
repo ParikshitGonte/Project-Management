@@ -1,0 +1,77 @@
+[
+{
+    "model": "todoapp.tasklist",
+    "pk": 1,
+    "fields": {
+        "name": "Data Structure & Algorithms",
+        "slug": "-",
+        "group": 1
+    }
+},
+{
+    "model": "todoapp.tasklist",
+    "pk": 2,
+    "fields": {
+        "name": "java",
+        "slug": "1",
+        "group": 2
+    }
+},
+{
+    "model": "todoapp.tasklist",
+    "pk": 3,
+    "fields": {
+        "name": "python cousre",
+        "slug": "p",
+        "group": 3
+    }
+},
+{
+    "model": "todoapp.task",
+    "pk": 1,
+    "fields": {
+        "title": "Bit Algorithms",
+        "task_list": 1,
+        "created_date": "2019-02-08",
+        "due_date": "2019-02-16",
+        "completed": true,
+        "completed_date": "2019-02-08",
+        "created_by": 1,
+        "assigned_to": 2,
+        "note": "",
+        "priority": 1
+    }
+},
+{
+    "model": "todoapp.task",
+    "pk": 2,
+    "fields": {
+        "title": "python",
+        "task_list": 3,
+        "created_date": "2019-02-11",
+        "due_date": "2019-02-21",
+        "completed": false,
+        "completed_date": null,
+        "created_by": 1,
+        "assigned_to": 2,
+        "note": "",
+        "priority": 2
+    }
+},
+{
+    "model": "todoapp.task",
+    "pk": 3,
+    "fields": {
+        "title": "JAVA Programming",
+        "task_list": 2,
+        "created_date": "2019-02-11",
+        "due_date": null,
+        "completed": false,
+        "completed_date": null,
+        "created_by": 3,
+        "assigned_to": 4,
+        "note": "",
+        "priority": 1
+    }
+}
+]

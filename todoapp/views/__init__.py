@@ -1,0 +1,10 @@
+from todoapp.views.add_list import add_list  # noqa: F401
+from todoapp.views.del_list import del_list  # noqa: F401
+from todoapp.views.delete_task import delete_task  # noqa: F401
+from todoapp.views.external_add import external_add  # noqa: F401
+from todoapp.views.list_detail import list_detail  # noqa: F401
+from todoapp.views.list_lists import list_lists  # noqa: F401
+from todoapp.views.reorder_tasks import reorder_tasks  # noqa: F401
+from todoapp.views.search import search  # noqa: F401
+from todoapp.views.task_detail import task_detail  # noqa: F401
+from todoapp.views.toggle_done import toggle_done  # noqa: F401
