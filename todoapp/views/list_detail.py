@@ -43,7 +43,6 @@ def list_detail(request, list_id=None, list_slug=None, view_completed=False) -> 
     # ######################
 
     if request.POST.getlist("add_edit_task"):
-        print("post")
         form = AddEditTaskForm(
             request.user,
             request.POST,

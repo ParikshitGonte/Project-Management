@@ -1,5 +1,4 @@
 import datetime
-
 import bleach
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test

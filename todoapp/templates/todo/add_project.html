@@ -1,0 +1,13 @@
+{# Form used by both Add Task and Edit Task views #}
+
+<form action="" name="project_add" method="post">
+  {% csrf_token %}
+<div id="AddTaskListForm" class="collapse mt-3">
+    <div class="form-group">
+      <label for="id_name" name="name">Project Name</label>
+      <input type="text" class="form-control" id="id_name" name="group_name" required placeholder="project name">
+    </div>
+    <p>
+      <input type="submit" name="add_edit_task" value="Submit" class="btn btn-primary"></p>  
+</div>
+</form>

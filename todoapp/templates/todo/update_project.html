@@ -1,0 +1,21 @@
+{% extends "todo/base.html" %}
+
+{% block page_heading %}{% endblock %}
+
+{% block title %}Add Todo List{% endblock %}
+
+{% block content %}
+
+<h2>Update</h2>
+<form action="" method="post">
+{% csrf_token %}
+<h4>Project Name:{{selected_item}}</h4><br/>
+Project List 
+
+
+<input type="text" name="group_name" required="true" autocomplete="off">
+
+<button type="submit" class="btn btn-primary">Update</button>
+
+</form>
+{% endblock %}

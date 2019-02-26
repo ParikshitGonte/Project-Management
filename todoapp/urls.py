@@ -1,6 +1,7 @@
 from django.urls import path
 
 from todoapp import views
+from todoapp.my_views import add_project_new,update_project
 
 app_name = 'todoapp'
 
@@ -29,6 +30,17 @@ urlpatterns = [
         views.list_detail,
         {'list_slug': 'mine'},
         name="mine"),
+
+    path(
+        'add_project/',
+        add_project_new,
+        name="add_project"),
+    
+    path(
+        'update_project/<int:group_id>',
+        update_project,
+        name="update_project"
+    ),
 
     path(
         '<int:list_id>/<str:list_slug>/completed/',

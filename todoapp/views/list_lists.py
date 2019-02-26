@@ -1,12 +1,10 @@
 import datetime
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponse
 from django.shortcuts import render
-
 from todoapp.forms import SearchForm
-from todoapp.models import Task, TaskList
+from todoapp.models import Task, TaskList,Group
 from todoapp.utils import staff_check
 
 
@@ -18,7 +16,6 @@ def list_lists(request) -> HttpResponse:
 
     thedate = datetime.datetime.now()
     searchform = SearchForm(auto_id=False)
-
     # Make sure user belongs to at least one group.
     if not request.user.groups.all().exists():
         messages.warning(

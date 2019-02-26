@@ -5,7 +5,6 @@ from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.text import slugify
-
 from todoapp.forms import AddTaskListForm
 from todoapp.utils import staff_check
 
@@ -42,7 +41,6 @@ def add_list(request) -> HttpResponse:
             form = AddTaskListForm(request.user, initial={"group": request.user.groups.all()[0]})
         else:
             form = AddTaskListForm(request.user)
-
     context = {"form": form}
 
     return render(request, "todo/add_list.html", context)
