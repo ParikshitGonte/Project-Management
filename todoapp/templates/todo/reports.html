@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>My Chartjs</title>
+</head>
+<body>
+  <div class="container">
+      <canvas id="myChart">
+      </canvas>
+  </div>  
+  
+  <script>
+  
+  
+  
+      let myChart = document.getElementById('myChart').getContext('2d');
+        //Global Options
+        Chart.defaults.global.defaultFontFamily ='Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777'
+
+      let massPopChart = new Chart(myChart, {
+          type:'doughnut',
+          data:{
+              labels:['Complete', 'Inprogress', 'Verfication'],
+			
+
+              datasets:[{
+                  label:'Population',
+                  data:[
+                  '{{complete_count}}',
+                  '{{inprogress_count}}',
+                  '{{verfication_count}}'],
+                  backgroundColor:['green','yellow','orange'],
+                  borderWidth:1,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+
+              }]
+          },
+          options:{
+              title:{
+                  display:true,
+				  text:'55',
+                  text:'Task Details',
+                  fontSize:25
+              },
+
+          }
+      });
+  </script>
+  <h3>Total No Of Tasks={{status_count}}</h3>
+  <h3>Completed Task={{complete_count}}</h3>
+  <h3>Inprogress Task={{inprogress_count}}</h3>
+  <h3>Verfication Task={{verfication_count}}</h3>
+</body>
+</html>

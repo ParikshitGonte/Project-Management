@@ -39,23 +39,10 @@ def update_project(request,group_id: int):
         return HttpResponseRedirect('/todoapp')
     return render(request,'todo/update_project.html',{'selected_item':selected_item})
 
-    '''
-    #form = request.POST
-    #if request.method == 'POST':
-      selected_item =Group.objects.get(id=group_id)
-      name = request.POST.get('group_name')
-      selected_item.name = name
-      selected_item.name.save()
-
-      return render(request,'todo/update_project.html',{'selected_item':item})
-
-'''
-'''
-def update_project_form(request, id):
-    if request.method == 'POST':
-      selected_item = get_object_or_404(Group, id=id)
-      name = request.POST.get('group_name')
-      selected_item.name = name
-      selected_item.save()
-    return render(request,'todo/update_project_form.html',{'groups':item})
-'''    
+def reports(request):
+    print("reports") 
+    status_count=Task.objects.values('status').count()
+    inprogress_count=Task.objects.filter(status='INPROGRESS').count()
+    complete_count=Task.objects.filter(status='COMPLETE').count()
+    verfication_count=Task.objects.filter(status='VERFICATION').count()
+    return render(request,'todo/reports.html',{'status_count':status_count,'inprogress_count':inprogress_count,'complete_count':complete_count,'verfication_count':verfication_count})

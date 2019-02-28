@@ -1,7 +1,7 @@
 from django.urls import path
 
 from todoapp import views
-from todoapp.my_views import add_project_new,update_project
+from todoapp.my_views import add_project_new,update_project,reports
 
 app_name = 'todoapp'
 
@@ -82,4 +82,10 @@ urlpatterns = [
         'search/',
         views.search,
         name="search"),
+
+    path(
+        'reports/',
+        reports,
+        name="reports"),
+    
 ]
