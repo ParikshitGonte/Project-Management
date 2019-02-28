@@ -40,9 +40,8 @@ def update_project(request,group_id: int):
     return render(request,'todo/update_project.html',{'selected_item':selected_item})
 
 def reports(request):
-    print("reports") 
     status_count=Task.objects.values('status').count()
     inprogress_count=Task.objects.filter(status='INPROGRESS').count()
     complete_count=Task.objects.filter(status='COMPLETE').count()
-    verfication_count=Task.objects.filter(status='VERFICATION').count()
+    verfication_count=Task.objects.filter(status='VERIFICATION').count()
     return render(request,'todo/reports.html',{'status_count':status_count,'inprogress_count':inprogress_count,'complete_count':complete_count,'verfication_count':verfication_count})
