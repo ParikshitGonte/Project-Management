@@ -5,7 +5,7 @@
 {% block content %}
 
   <h1>Project Lists</h1>
-  
+    
 
   <p>{{ task_count }} tasks in {{ list_count }} project{{ list_count|pluralize }}</p>
 
@@ -37,6 +37,33 @@
       <a href="" class="btn btn-primary disabled">If you were staff, you could create a new  project list</a>
     {% endif %}
       
-  </div>
+  </div> 
+  
+  <hr>
+  {% comment %} <body> 
+  <script>
+  function intime()
+  {
+    document.getElementById("intime1").disabled=true;
+    document.getElementById("outtime1").disabled=false;
+  }
+  </script>
+  </body>  {% endcomment %}
+  
+
+  
+<form method="POST">
+{% csrf_token %}
+{{form1}}
+<input type="submit" id="intime1" value="InTime">
+</form>
+
+<form method="POST">
+{% csrf_token %}
+{{form2}}
+<input type="submit" id="outtime1" value="OutTime">
+</form>
+
+UserName={{ request.user }}
 
 {% endblock %}

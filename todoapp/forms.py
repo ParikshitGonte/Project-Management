@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.models import Group
 from django.forms import ModelForm
-from todoapp.models import Task, TaskList
-
+from todoapp.models import Task, TaskList,Duration
+from django.contrib.admin import widgets
 
 class AddTaskListForm(ModelForm):
     """The picklist showing allowable groups to which a new list can be added
@@ -94,4 +94,27 @@ class AddExternalTaskForm(ModelForm):
 class SearchForm(forms.Form):
     """Search."""
 
-    q = forms.CharField(widget=forms.widgets.TextInput(attrs={"size": 35}))
+    q = forms.CharField(widget=forms.widgets.TextInput(attrs={"size": 35})
+    )
+
+class inTimeForm(forms.ModelForm):
+    class Meta:
+        model=Duration
+
+        fields=["in_time"]
+        widgets={
+            "in_time":forms.TimeInput(attrs={'type':'time'}),
+        }
+
+class outTimeForm(forms.ModelForm):
+    class Meta:
+        model=Duration
+
+        fields=["out_time"]
+        widgets={
+            "out_time":forms.TimeInput(attrs={'type':'time'}),
+        }
+    def __init__(self,*args,**kwargs):
+        super(outTimeForm,self).__init__(*args,**kwargs)
+        self.fields['out_time'].widget=forms.HiddenInput()
+

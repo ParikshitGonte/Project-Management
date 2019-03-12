@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import Group,User
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.timezone import utc
 
 
 class TaskList(models.Model):
@@ -94,3 +95,14 @@ class Comment(models.Model):
     def __str__(self):
         return self.snippet()
 
+class Duration(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    in_time=models.TimeField(default=timezone.now)
+    out_time=models.TimeField(blank=True,null=True)
+    present_date=models.DateField(default=datetime.date.today)
+    task_duration=models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return str(self.user) 
+
+    

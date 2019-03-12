@@ -1,0 +1,73 @@
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Time Report</title>
+</head>
+<body>
+    <div class="container">
+      <canvas id="myChart">
+      </canvas>
+  </div>  
+  <script>
+  let myChart = document.getElementById('myChart').getContext('2d');
+        Chart.defaults.global.defaultFontFamily ='Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#777'
+
+      let massPopChart = new Chart(myChart, {
+          type:'line',
+          data:{
+            labels:[{% for i in myobject %}'{{i.present_date}}',{% endfor %}],
+			datasets:[{
+                  label:'Time',
+                  data:[{% for i in myobject %}'{{i.task_duration|intdiv:60}}.{{i.task_duration|mod:60}}',{% endfor %},],
+                  fill:false,
+                  borderWidth:3,
+                  borderColor:'#777',
+                  hoverBorderWidth:3,
+                  hoverBorderColor:'#000'
+
+              }]
+          },
+          options:{
+            scales: {
+            xAxes: [{
+            scaleLabel: 
+            {
+            display:true,
+            labelString:'Date',
+            }
+            }],
+            yAxes: [{
+                
+                ticks:{
+                type:'time',
+                distribution:'series', 
+                beginAtZero:true,   
+                },
+            scaleLabel: 
+            {
+            display:true,
+            labelString:'Time(Hours)',
+            }
+            }]
+
+        },
+        title:{
+            display:true,
+			text:'55',
+            text:'Time Reports',
+            fontSize:25
+              },
+            }
+      });
+</script>
+</body>
+</html>

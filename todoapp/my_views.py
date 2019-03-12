@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from datetime import date
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import redirect, render,get_object_or_404
 from django.utils.text import slugify
@@ -45,3 +46,7 @@ def reports(request):
     complete_count=Task.objects.filter(status='COMPLETE').count()
     verfication_count=Task.objects.filter(status='VERIFICATION').count()
     return render(request,'todo/reports.html',{'status_count':status_count,'inprogress_count':inprogress_count,'complete_count':complete_count,'verfication_count':verfication_count})
+
+def time_reports(request):
+    myobject=Duration.objects.all().order_by('present_date')
+    return render(request,'todo/time_reports.html',{'myobject':myobject})
