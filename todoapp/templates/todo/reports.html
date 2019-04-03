@@ -1,4 +1,61 @@
 <!DOCTYPE html>
+<html>
+<head>
+<title>Graph Example</title>
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+</head>
+<style>
+#chartdiv 
+{
+  width: 100%;
+  height: 500px;
+}
+
+</style>
+
+<!-- Resources -->
+<div id="chartdiv"></div>
+<!-- Chart code -->
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+chart.legend = new am4charts.Legend();
+
+chart.data = [
+  {
+    status: "Complete",
+    number:'{{complete_count}}'
+  },
+  {
+    status: "Verfication",
+    number:'{{verfication_count}}'
+  },
+  {
+    status: "InProgress",
+    number:'{{inprogress_count}}' 
+  },
+];
+
+chart.innerRadius = 100;
+
+var series = chart.series.push(new am4charts.PieSeries3D());
+series.dataFields.value = "number";
+series.dataFields.category = "status";
+series.colors.step = 15;
+</script>
+</head>
+
+<!-- HTML -->
+
+</html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,4 +118,4 @@
   <h3>Inprogress Task={{inprogress_count}}</h3>
   <h3>Verfication Task={{verfication_count}}</h3>
 </body>
-</html>
+</html> {% endcomment %}

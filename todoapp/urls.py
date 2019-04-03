@@ -89,7 +89,7 @@ urlpatterns = [
         name="reports"),
 
     path(
-        'time_reports/',
+        'time_reports/<int:user_id>',
         time_reports,
         name="time_reports"),
  

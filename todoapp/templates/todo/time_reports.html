@@ -10,24 +10,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Time Report</title>
 </head>
+<form  method="POST">
+{% csrf_token %}
+{{form}}
+<input type="submit" value="View">
+</form>
 <body>
     <div class="container">
-      <canvas id="myChart">
-      </canvas>
+    <canvas id="myChart">
+    </canvas>
+    
   </div>  
+  
   <script>
-  let myChart = document.getElementById('myChart').getContext('2d');
+  
+    let myChart = document.getElementById('myChart').getContext('2d');
         Chart.defaults.global.defaultFontFamily ='Lato';
         Chart.defaults.global.defaultFontSize = 18;
         Chart.defaults.global.defaultFontColor = '#777'
-
       let massPopChart = new Chart(myChart, {
+          
           type:'line',
+          
           data:{
-            labels:[{% for i in myobject %}'{{i.present_date}}',{% endfor %}],
+            labels:[
+    
+                    {% for i in myobject %}
+                    '{{i.present_date}}',
+                    {% endfor %}
+                    ],
 			datasets:[{
                   label:'Time',
-                  data:[{% for i in myobject %}'{{i.task_duration|intdiv:60}}.{{i.task_duration|mod:60}}',{% endfor %},],
+                  data:[{% for i in myobject %}{{i.task_duration|intdiv:60}}.{{i.task_duration|mod:60}},{% endfor %},],
                   fill:false,
                   borderWidth:3,
                   borderColor:'#777',
@@ -35,6 +49,7 @@
                   hoverBorderColor:'#000'
 
               }]
+
           },
           options:{
             scales: {
@@ -50,7 +65,8 @@
                 ticks:{
                 type:'time',
                 distribution:'series', 
-                beginAtZero:true,   
+                beginAtZero:true,
+                stepSize:1,   
                 },
             scaleLabel: 
             {
@@ -62,12 +78,15 @@
         },
         title:{
             display:true,
-			text:'55',
+			      text:'55',
             text:'Time Reports',
             fontSize:25
               },
             }
+    
       });
+     
+
 </script>
 </body>
 </html>

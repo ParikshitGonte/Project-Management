@@ -118,3 +118,10 @@ class outTimeForm(forms.ModelForm):
         super(outTimeForm,self).__init__(*args,**kwargs)
         self.fields['out_time'].widget=forms.HiddenInput()
 
+class userform(forms.ModelForm):
+      class Meta:
+          model=Duration
+          fields=["user"]
+
+
+

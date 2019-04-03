@@ -101,6 +101,7 @@ class Duration(models.Model):
     out_time=models.TimeField(blank=True,null=True)
     present_date=models.DateField(default=datetime.date.today)
     task_duration=models.PositiveIntegerField(default=0)
+       
 
     def __str__(self):
         return str(self.user) 
