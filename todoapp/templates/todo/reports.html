@@ -12,22 +12,13 @@
   width: 100%;
   height: 500px;
 }
-
 </style>
-
-<!-- Resources -->
 <div id="chartdiv"></div>
-<!-- Chart code -->
 <script>
-// Themes begin
 am4core.useTheme(am4themes_animated);
-// Themes end
-
 var chart = am4core.create("chartdiv", am4charts.PieChart3D);
 chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
 chart.legend = new am4charts.Legend();
-
 chart.data = [
   {
     status: "Complete",
@@ -42,80 +33,11 @@ chart.data = [
     number:'{{inprogress_count}}' 
   },
 ];
-
 chart.innerRadius = 100;
-
 var series = chart.series.push(new am4charts.PieSeries3D());
 series.dataFields.value = "number";
 series.dataFields.category = "status";
 series.colors.step = 15;
 </script>
 </head>
-
-<!-- HTML -->
-
 </html>
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js">
-    </script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Task Report</title>
-</head>
-<body>
-  <div class="container">
-      <canvas id="myChart">
-      </canvas>
-  </div>  
-  
-  <script>
-  
-  
-  
-      let myChart = document.getElementById('myChart').getContext('2d');
-        //Global Options
-        Chart.defaults.global.defaultFontFamily ='Lato';
-        Chart.defaults.global.defaultFontSize = 18;
-        Chart.defaults.global.defaultFontColor = '#777'
-
-      let massPopChart = new Chart(myChart, {
-          type:'doughnut',
-          data:{
-              labels:['Complete', 'Inprogress', 'Verfication'],
-			
-
-              datasets:[{
-                  label:'Tasks',
-                  data:[
-                  '{{complete_count}}',
-                  '{{inprogress_count}}',
-                  '{{verfication_count}}'],
-                  backgroundColor:['green','yellow','orange'],
-                  borderWidth:1,
-                  borderColor:'#777',
-                  hoverBorderWidth:3,
-                  hoverBorderColor:'#000'
-
-              }]
-          },
-          options:{
-              title:{
-                  display:true,
-				  text:'55',
-                  text:'Task Details',
-                  fontSize:25
-              },
-
-          }
-      });
-  </script>
-  <h3>Total No Of Tasks={{status_count}}</h3>
-  <h3>Completed Task={{complete_count}}</h3>
-  <h3>Inprogress Task={{inprogress_count}}</h3>
-  <h3>Verfication Task={{verfication_count}}</h3>
-</body>
-</html> {% endcomment %}
