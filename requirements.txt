@@ -2,7 +2,7 @@ autopep8==1.4.3
 bleach==3.3.0
 Click==7.0
 cycler==0.10.0
-Django==3.2.4
+Django==3.2.13
 kiwisolver==1.0.1
 matplotlib==3.0.2
 numpy==1.15.4
